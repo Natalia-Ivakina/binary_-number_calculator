@@ -161,11 +161,38 @@ class _ConvertationState extends State<Convertation> {
             ),
           ),
           //_____________________________________________________________________________
-          Text(
-            '↑↓',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-              fontSize: screenWidth * 0.1,
+          //⟱⇓⇩⬇↓▼￬↓
+          Padding(
+            padding: EdgeInsets.only(bottom: screenHeight * 0.003),
+            child: SizedBox(
+              height: screenHeight * 0.07, // Уменьшенная высота
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: screenWidth * 0.04),
+                      child: Text(
+                        'Result',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.03,
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      '▼',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        fontSize: screenWidth * 0.1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           //_____________________________________________________________________________
@@ -336,7 +363,7 @@ class _ConvertationState extends State<Convertation> {
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 1,
                   child: SquareElevatedButton(
-                    text: '2 → 10',
+                    text: 'Bin ➠ Dec',
                     color: colorAction,
                     onPressed: () => _performOperation('2'),
                   ),
@@ -344,8 +371,9 @@ class _ConvertationState extends State<Convertation> {
                 StaggeredGridTile.count(
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 1,
+                  //➠➲➥➓❷
                   child: SquareElevatedButton(
-                    text: '10 → 2',
+                    text: 'Dec ➠ Bin',
                     color: colorAction,
                     onPressed: () => _performOperation('10'),
                   ),

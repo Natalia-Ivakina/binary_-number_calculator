@@ -130,7 +130,7 @@ class SquareElevatedButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: screenWidth * 0.06,
+              fontSize: screenWidth * 0.045,
               color: Theme.of(context).colorScheme.outlineVariant,
             ),
           ),

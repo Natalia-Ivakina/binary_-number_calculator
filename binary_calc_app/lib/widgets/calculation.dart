@@ -225,11 +225,24 @@ class _CalculationState extends State<Calculation> {
             ),
           ),
           //_____________________________________________________________________________
-          Text(
-            buttonText,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-              fontSize: screenWidth * 0.1,
+          Padding(
+            padding: EdgeInsets.only(bottom: screenHeight * 0.003),
+            child: SizedBox(
+              height: screenHeight * 0.07, // Уменьшенная высота
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      buttonText,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        fontSize: screenWidth * 0.1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           //_____________________________________________________________________________
@@ -279,6 +292,19 @@ class _CalculationState extends State<Calculation> {
           ),
           SizedBox(
             height: screenHeight * 0.04,
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.04),
+                child: Text(
+                  'Result',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.03,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ),
+              ),
+            ),
           ),
           //_____________________________________________________________________________
           Expanded(
