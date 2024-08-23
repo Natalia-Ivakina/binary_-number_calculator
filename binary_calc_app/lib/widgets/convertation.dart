@@ -38,6 +38,11 @@ class _ConvertationState extends State<Convertation> {
     bool isVibrationOn = context.read<SettingsModel>().isVibrationOn;
     await handleVibration(isVibrationOn);
     setState(() {
+      // Если текст в поле равен "No copied data", очищаем поле
+      if (_controller.text == 'No copied data') {
+        _controller.clear();
+      }
+
       if (_controller.text.length < 40) {
         _controller.text += digit;
         value1 = _controller.text;
@@ -93,6 +98,16 @@ class _ConvertationState extends State<Convertation> {
       } else {
         _controller.text = 'No copied data';
       }
+    });
+  }
+
+  void _copyResult() async {
+    bool isVibrationOn = context.read<SettingsModel>().isVibrationOn;
+    await handleVibration(isVibrationOn);
+    Clipboard.setData(ClipboardData(text: result)).then((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Result copied to clipboard')),
+      );
     });
   }
 
@@ -229,6 +244,11 @@ class _ConvertationState extends State<Convertation> {
                     ),
                   ),
                 ),
+              ),
+              IconButton(
+                onPressed: _copyResult,
+                icon: Icon(Icons.copy,
+                    color: Theme.of(context).colorScheme.inversePrimary),
               ),
             ],
           ),
